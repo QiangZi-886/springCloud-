@@ -1,0 +1,27 @@
+server:
+  port: 8030
+spring:
+  application:
+    name: gateway   #别名
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/    #服务网关实际上也是注册中心的一个服务，所以也需要将其注册进中心
+zuul:
+  routes:
+    provider: /p/**       #为provider服务者另起一个新的名字，这样通过服务网关进行访问的时候就不需要记住它原本冗余的URL了
+    consumer: /c/**
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
+  host:
+    connect-timeout-millis: 3000
+    socket-timeout-millis: 3000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeout-in-milliseconds: 3000

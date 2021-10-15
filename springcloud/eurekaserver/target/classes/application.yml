@@ -1,0 +1,8 @@
+server:
+  port: 8761    #注册中心默认使用的端口号是8761
+eureka:
+  client:
+    register-with-eureka: false     #这里的意思是是否将当前的eureka服务作为客户端注册进注册中心，在这里选择false  (是否将自己注册进Eureka Server)
+    fetch-registry: false     #是否从其他的一个Eureka Server获取注册的信息(自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务)
+    service-url:
+      defaultZone: http://localhost:8761/eureka/      #将当前注册中心的路径配置起来

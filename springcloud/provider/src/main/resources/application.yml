@@ -1,0 +1,11 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: provider  #为服务提供者取一个名字
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/      #将服务提供者注册进我们的注册中心的这个路径下
+  instance:
+    prefer-ip-address: true   #将它的ip地址也注册进服务中心

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: configclient
+  profiles:   #这里的application.name和profiles.active的值中间使用连字符连接起来就是需要在shared文件夹下读取的配置文件文件名
+    active: dev
+  cloud:
+    config:
+      uri: http://localhost:8762
+      fail-fast: true   #这个配置是是否启动快速失败功能，功能开启则优先判断config server是否正常
+#（Spring Cloud Config的客户端会预先加载很多其他信息，然后再开始连接ConfigServer进行属性的注入。
+#当我们构建的应用较为复杂的时候， 可能在连接ConfigServer之前花费较长的启动时间， 而在一些特殊场景下，
+#我们又希望可以快速知道当前应用是否能顺利地从ConfigServer获取到配置信息， 这对在初期构建调试环境时， 可以减少很多等待启动的时间。
+
